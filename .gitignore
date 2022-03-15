@@ -1,3 +1,3 @@
-env
-__pychache__
-migrations
+env/
+__pychache__/
+migrations/
