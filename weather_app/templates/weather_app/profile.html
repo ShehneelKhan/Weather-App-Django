@@ -1,0 +1,60 @@
+{% extends "weather_app/base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Profile
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'weather_app/css/profile.css' %}"  type="text/css">
+{% endblock css %}
+
+{% block active %}
+
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
+
+    {% if user.is_authenticated %}
+
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'profile' %}">Profile</a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      
+    {% else %}
+       
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+        
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+    {% endif %}
+    
+    
+ 
+  
+  </ul>
+
+{% endblock active %}
+
+
+
+
+
+
+{% block content %}
+<div class="container">
+    <h4>Username: {{user.username}}</h4>
+    <h4>Email: {{user.email}}</h4>
+</div>
+    
+{% endblock content %}

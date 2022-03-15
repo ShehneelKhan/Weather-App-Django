@@ -1,0 +1,73 @@
+{% extends 'weather_app/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'weather_app/css/register.css' %}">
+{% endblock css %}
+
+
+
+
+{% block active %}
+
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
+
+{% if user.is_authenticated %}
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+  </li>
+
+
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+  </li>
+  
+{% else %}
+   
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'register' %}">Register</a>
+      </li>
+    
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+{% endif %}
+    
+ 
+  
+  </ul>
+
+{% endblock active %}
+
+
+{% block content %}
+    
+    <div class="container" style="margin-top: 30px;">
+        <h1>Register</h1><br>
+        <form action="" method="post" class="uniForm">
+
+            {% csrf_token %}
+
+            {{ form|crispy }}
+            
+            <div class="form-group" id="signup-button">
+                <button class="btn">Sign Up</button>
+            </div>
+
+            <div class="form-group">
+                <small class="text-muted ml-3" >Already have an account? <a href="{% url 'login' %}">Sign In</a></small>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

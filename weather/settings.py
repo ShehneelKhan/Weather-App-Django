@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'weather_app',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +79,9 @@ WSGI_APPLICATION = 'weather.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weather',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
+        'NAME': 'user',
+        'USER': 'my_user',
+        'PASSWORD': '909assassinscreed909',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -128,3 +130,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+STATICFILE_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+
+LOGIN_URL = 'login'     #When we try to access page that requires login, we are saying to show login page when that happens

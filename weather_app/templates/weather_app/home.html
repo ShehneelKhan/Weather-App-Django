@@ -1,0 +1,89 @@
+{% extends "weather_app/base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'weather_app/css/home.css' %}"  type="text/css">
+{% endblock css %}
+
+{% block active %}
+
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'home' %}">Home</a>
+    </li>
+
+    {% if user.is_authenticated %}
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      
+    {% else %}
+       
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+        
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+    {% endif %}
+    
+    
+ 
+  
+  </ul>
+
+{% endblock active %}
+
+
+
+
+
+
+{% block content %}
+
+
+
+    <div class="container">
+      <br>
+      <h1>Weather Data</h1>
+      <br>
+      <form method="post" class="col-md">
+        {% csrf_token %}
+        <div class=" input-group">
+
+        <input type="text" class="form-control" name="city" placeholder="Choose Your City ...">
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        </div>
+      <form>
+        {% if country %}
+
+        <ul class="list-group">
+            <li class="list-group-item">Country: {{ country }}</li>
+            <li class="list-group-item">Temperature: {{ temperature }}</li>
+            <li class="list-group-item">Feels Like: {{feels_like}}</li>
+            <li class="list-group-item">Pressure: {{ pressure }}</li>
+            <li class="list-group-item">Humidity: {{ humidity }}</li>
+            <li class="list-group-item">Wind Speed: {{ wind_speed }}</li>
+            <li class="list-group-item">Main: {{ main }} </li>  
+            <!-- <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="Image" style="width:70px">        -->
+            <li class="list-group-item">Description: {{ description }}</li>
+
+          </ul>
+        {% endif %}
+        </div>
+    
+{% endblock content %}
