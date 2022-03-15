@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1q831dj8$+$78gg#)27!#04or2wim)tb@i+tv^q-69*ct7&6bg'
+SECRET_KEY = 'YOUR SECRET KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,12 +78,7 @@ WSGI_APPLICATION = 'weather.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'user',
-        'USER': 'my_user',
-        'PASSWORD': '909assassinscreed909',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        # YOUR DATABASE CONFIGURATIONS
     }
 }
 
